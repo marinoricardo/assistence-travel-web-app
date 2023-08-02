@@ -19,14 +19,11 @@ export class AppComponent implements OnInit {
   }
 
   getWeatherForecast(city_name: string) {
-    // document.getElementById('loaderBtn')?.click()
     this._weather.getWeatherForecast(city_name)
     .subscribe(res => {
       this.weather_forecast = res
       const country_code = this.weather_forecast.sys.country;
       this.country = this.convertCountryCode(country_code)
-      // document.getElementById('loaderCloseBtn')?.click()
-      // this.city_name = ''
     })
   }
   search() {
