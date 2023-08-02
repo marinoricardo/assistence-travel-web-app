@@ -1,0 +1,105 @@
+.container-fluid {
+    padding: 4%;
+}
+.weather-card {
+    min-width: 60%;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.main {
+    /* height: 100vh; */
+    padding: 50px;
+    height: 80vh;
+    border-radius: 0px 40px 40px 0px;
+    background-color: #f6f6f8;
+    position: relative;
+
+}
+
+.sidebar {
+    /* height: 100vh; */
+    padding: 80px 50px;
+    height: 80vh;
+    border-radius: 40px 0px 0px 40px;
+    background: rgba(255, 255, 255, 0.815);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.content {
+    /* background-color: #f6f6f8; */
+    border-radius: 40px;
+    min-height: 50vh;
+}
+
+.weather-icon {
+    width: 100%;
+    height: 150px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 100px;
+}
+
+.container-fluid {
+    min-height: 100vh;
+    /* background-image: url('https://i.ibb.co/RDfPqXz/pcn.jpg'); */
+    background-color: #2A4C7E;
+}
+
+h2 {
+    font-size: 5.5rem;
+    font-family: 'Roboto'
+}
+
+h3 {
+    color: #2A4C7E;
+    font-size: 1.3rem;
+    font-family: 'Roboto';
+    padding: 20px 10px 25px;
+}
+
+p {
+    font-family: 'Roboto';
+    font-size: 1.1rem;
+    color: grey;
+    font-weight: normal;
+}
+h5 {
+    font-family: 'Roboto';
+    font-size: 1.0rem;
+    /* font-weight: bold; */
+}
+
+.remove-box-shadow {
+    box-shadow: none !important;
+    border: 0.5px #2A4C7E; 
+    border-radius: 10px 0px 0px 10px;
+    
+}
+
+.remove-border-radius {
+    border-radius: 0;
+    height: 36px;
+}
+
+p,span {
+    font-family: 'Roboto'
+}
+
+.card-title .moeda {
+    font-size: 2.4rem;
+    font-family: 'Roboto'
+}
+.card-title .ref_moeda {
+    font-family: 'Roboto';
+    font-weight: normal;
+    color: grey;
+}
+
+.img-principal{
+    padding: 40px;
+}
