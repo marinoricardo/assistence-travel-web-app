@@ -4,11 +4,11 @@
         <div class="row">
 
           <div class="col-md-9 p-0">
-            <input type="text" [(ngModel)]="city_name" class="form-control remove-box-shadow"
+            <input type="text" [(ngModel)]="city_name" name="city_name" class="form-control remove-box-shadow"
               placeholder="Pesquise por uma cidade" (keyup.enter)="onEnterKeyPressed($event)">
           </div>
           <div class="col-md-3 p-0">
-            <button class="btn btn-danger remove-border-radius" (click)="search()" [disabled]="disabled">
+            <button class="btn btn-danger remove-border-radius" name="btnSearch" (click)="search()" [disabled]="disabled">
               <span class="spinner-border spinner-border-sm" aria-hidden="true" *ngIf="spinner"></span>
               <span role="status" style="padding-left: 10px;">Pesquisar</span>
             </button>

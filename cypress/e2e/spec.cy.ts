@@ -1,6 +1,7 @@
-describe('My First Test', () => {
-  it('Visits the initial project page', () => {
+describe('Home Page', () => {
+  it('should search city name', () => {
     cy.visit('/')
-    cy.contains('app is running!')
+    cy.get('input[name="city_name"]').type('nampula')
+    cy.get('button[name="btnSearch"]').click()
   })
 })
