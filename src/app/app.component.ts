@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { WeatherService } from './_services/weather.service';
 import { PopulationGdpComponent } from './components/population-gdp/population-gdp.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-root',
@@ -36,15 +37,28 @@ export class AppComponent implements OnInit {
       .subscribe(res => {
         this.weather_forecast = res
         this.country_code = res.sys.country;
-        this.executarComandoFilho(this.country_code)
+        this.executePopulation(this.country_code)
         this.country = this.convertCountryCode(this.country_code)
         this.city_name = ""
         this.disabled = false
         this.spinner = false
-      })
+      }, (error => {
+        this.disabled = false
+        this.spinner = false
+      }))
     this._weather.getWeatherForecast(city_name).subscribe(response => {
       this.forecast = response.list
-    })
+    }, (error => {
+      Swal.fire({
+        title: "Erro!",
+        text: `${error.error.message}`,
+        icon: "error",
+        confirmButtonText: "Ok",
+        confirmButtonColor: "#8B0000",
+      })
+      this.spinner = false
+      this.disabled = false
+    }))
   }
   search() {
     this.getWeather(this.city_name)
@@ -74,7 +88,7 @@ export class AppComponent implements OnInit {
     this.getWeather(event.srcElement.value)
 
   }
-  executarComandoFilho(country: string) {
+  executePopulation(country: string) {
     if (this.populationGdpComponent) {
       this.populationGdpComponent.executeCommand(country);
     }
