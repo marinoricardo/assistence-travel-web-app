@@ -1,93 +1,50 @@
 <div class="container-fluid">
   <div class="content">
     <div class="row">
-      <div class="col-md-4 sidebar shimmer">
+      <div class="col-md-4 sidebar">
         <div class="row">
-          
+
           <div class="col-md-9 p-0">
             <input type="text" [(ngModel)]="city_name" class="form-control remove-box-shadow"
               placeholder="Procure a sua cidade">
           </div>
           <div class="col-md-3 p-0">
-            <button class="btn btn-danger remove-border-radius" (click)="search()">Pesquisar</button>
+            <button class="btn btn-danger remove-border-radius" (click)="search()" [disabled]="disabled">
+              <span class="spinner-border spinner-border-sm" aria-hidden="true" *ngIf="spinner"></span>
+              <span role="status" style="padding-left: 10px;">Pesquisar</span>
+            </button>
           </div>
         </div>
         <div class="text-center">
-          
+
           <img src="https://i.ibb.co/Kzkk59k/15.png" class="img-principal" width="50%" alt="">
         </div>
-        
-        <h2>{{ weather_forecast.main.feels_like }}°C</h2>
+
+        <h2>{{ weather_forecast.main.temp }}°C</h2>
         <h4>{{ weather_forecast.name }}, {{country}}</h4>
         <hr>
-        <span>Max: {{ weather_forecast.main.temp_max }} °C</span> <br>
+        <span>Max: {{ weather_forecast.main.temp_max }} °C</span>
         <span>Min: {{ weather_forecast.main.temp_min }} °C</span> <br>
         <span>Humidade: {{ weather_forecast.main.humidity }} %</span> <br>
         <span>Pressao: {{ weather_forecast.main.pressure }} Pa</span> <br>
       </div>
       <div class="col-md-8 main">
-        
-        <h3>Forecast</h3>
+
         <div class="row">
-          <div class="col-md-2">
-            <div class="card mb-3 weather-card">
-              <div class="card-body text-center">
-                <h5 class="card-title">Quinta-feira</h5>
-                <img src="https://i.ibb.co/PZQXH8V/27.png" width="55" height="50" alt="">
-                <p class="card-text">17.4°C</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="card mb-3 weather-card">
-              <div class="card-body text-center">
-                <h5 class="card-title">Quinta-feira</h5>
-                <img src="https://i.ibb.co/PZQXH8V/27.png" width="60" height="50" alt="">
-                <p class="card-text">17.4°C</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="card mb-3 weather-card">
-              <div class="card-body text-center">
-                <h5 class="card-title">Quinta-feira</h5>
-                <img src="https://i.ibb.co/PZQXH8V/27.png" width="60" height="50" alt="">
-                <p class="card-text">17.4°C</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="card mb-3 weather-card">
-              <div class="card-body text-center">
-                <h5 class="card-title">Quinta-feira</h5>
-                <img src="https://i.ibb.co/rb4rrJL/26.png" width="60" height="50" alt="">
-                <p class="card-text">17.4°C</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="card mb-3 weather-card">
-              <div class="card-body text-center">
-                <h5 class="card-title">Quinta-feira</h5>
-                <img src="https://i.ibb.co/Kzkk59k/15.png" width="60" height="50" alt="">
-                <p class="card-text">17.4°C</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="card mb-3 weather-card">
-              <div class="card-body text-center">
-                <h5 class="card-title">Quinta-feira</h5>
-                <img src="https://i.ibb.co/PZQXH8V/27.png" width="60" height="50" alt="">
-                <p class="card-text">17.4°C</p>
+          <div class="col-md-12">
+            <div class="text-center" *ngIf="spinner">
+              <div class="loader">
+                <div class="spinner-border m-5" style="width: 3rem; height: 3rem;" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
               </div>
             </div>
           </div>
           <div class="col-md-6">
             <h3>Exchange Rates</h3>
-            <div class="card mb-3 weather-card" style="filter: blur(4px);">
+            <div class="card mb-3 weather-card">
               <div class="card-body">
-                <h5 class="card-title"><span class="moeda">MZN </span><span class="ref_moeda">Moeda de Referencia</span>
+                <h5 class="card-title"><span class="moeda">EUR </span><span class="ref_moeda">Moeda de Referencia</span>
                 </h5>
                 <div class="card-text">
                   <table class="table">
@@ -95,20 +52,57 @@
                       <tr>
                         <th scope="col"></th>
                         <th scope="col"></th>
+                        <th scope="col"></th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
+                        <td>MZN</td>
+
+                        <td>12</td>
+                        <td><img src="https://flagcdn.com/w320/mz.png" width="30" height="30"
+                            style="border-radius: 50%;" alt=""></td>
+                      </tr>
+                      <tr>
                         <td>USD</td>
-                        <td>92</td>
+
+                        <td>12</td>
+                        <td><img src="https://flagcdn.com/w320/us.png" width="30" height="30"
+                            style="border-radius: 50%;" alt=""></td>
+                      </tr>
+                      <tr>
+                        <td>ZAR</td>
+
+                        <td>1.9</td>
+                        <td><img src="https://flagcdn.com/w320/za.png" width="30" height="30"
+                            style="border-radius: 50%;" alt=""></td>
+                      </tr>
+                      <tr>
+                        <td>AUD</td>
+
+                        <td>1.9</td>
+                        <td><img src="https://flagcdn.com/w320/tv.png" width="30" height="30"
+                            style="border-radius: 50%;" alt=""></td>
                       </tr>
                       <tr>
                         <td>CAD</td>
-                        <td>12</td>
+
+                        <td>1.9</td>
+                        <td><img src="https://flagcdn.com/w320/ca.png" width="30" height="30"
+                            style="border-radius: 50%;" alt=""></td>
                       </tr>
                       <tr>
                         <td>GBP</td>
+
                         <td>1.9</td>
+                        <td><img src="https://flagcdn.com/w320/gb.png" width="30" height="30"
+                            style="border-radius: 50%;" alt=""></td>
+                      </tr>
+                      <tr>
+                        <td>JPY</td>
+                        <td>1.9</td>
+                        <td><img src="https://flagcdn.com/w320/jp.png" width="30" height="30"
+                            style="border-radius: 50%;" alt=""></td>
                       </tr>
                     </tbody>
                   </table>
@@ -135,32 +129,26 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
-                <div class="card mb-3 weather-card">
-                  <div class="card-body text-center">
-                    <h5 class="card-title">558675876</h5>
-                    <p class="card-text" style="color: grey;">current population</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="card mb-3 weather-card">
-                  <div class="card-body text-center">
-                    <h5 class="card-title">1726</h5>
-                    <p class="card-text" style="color: grey; ">GDP per capita</p>
-                  </div>
-                </div>
+            </div>
+          </div>
+        </div>
+        <h3>Weather Forecast 5 day / 3 hour</h3>
+        <div class="row">
+          <div class="col-2" *ngFor="let item of forecast">
+            <div class="card mb-3 weather-card">
+              <div class="card-body text-center">
+                <h5 class="card-title">{{ item.dt_txt }}</h5>
+                <img src="https://i.ibb.co/PZQXH8V/27.png" width="55" height="50" alt="">
+                <p class="card-text">{{ item.main.temp }}°C</p>
               </div>
             </div>
-
           </div>
           <div class="col-md-12">
-            <div class="alert alert-light" role="alert">
+            <div class="alert alert-light mt-5" role="alert">
               Aproveite as vantagens exclusivas! Autentique-se ou crie sua conta para acessar informações adicionais
               <button class="btn btn-danger">Entrar</button>
             </div>
           </div>
-
         </div>
       </div>
     </div>
