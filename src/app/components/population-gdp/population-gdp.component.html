@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="card mb-3 weather-card">
+            <div class="card-body text-center">
+                <h5 class="card-title">Numero da População</h5>
+                <p class="card-text" style="color: grey;">ultima actualização {{ last_update_pop }}</p>
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Ano</th>
+                        <th scope="col">População</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let pop of population">
+                        <td>{{ pop.date }}</td>
+                        <td>{{ pop.value }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card mb-3 weather-card">
+            <div class="card-body text-center">
+                <h5 class="card-title">PIB per capita</h5>
+                <p class="card-text" style="color: grey;">ultima actualização {{ last_update_gdp }}</p>
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Ano</th>
+                        <th scope="col">PIB</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let gdp of gdp_per_capita">
+                        <td>{{ gdp.date }}</td>
+                        <td>{{ gdp.value }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -5,11 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { PopulationGdpComponent } from './components/population-gdp/population-gdp.component';
+import { ExachangeRatesComponent } from './components/exachange-rates/exachange-rates.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PopulationGdpComponent,
+    ExachangeRatesComponent
   ],
   imports: [
     BrowserModule,

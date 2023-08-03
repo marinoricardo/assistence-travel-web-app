@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Weather } from '../interfaces/weather';
 import { URL } from 'src/URL';
-import { ExchangeRate } from '../interfaces/exchange-rate';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +18,13 @@ export class WeatherService {
   }
 
   getExchangeRates(){
-    return this.http.get<any>('https://v6.exchangerate-api.com/v6/3120e260d315985f902abd0a/latest/MZN').pipe()
+    return this.http.get<any>('https://v6.exchangerate-api.com/v6/3120e260d315985f902abd0a/latest/EUR').pipe()
+  }
+
+  getPopulation(indicator: string){
+    return this.http.get<any>(`${URL.worldBankUrl}/${indicator}/indicator/SP.POP.TOTL?format=json`).pipe();
+  }
+  getGdpPerCapita(indicator: string){
+    return this.http.get<any>(`${URL.worldBankUrl}/${indicator}/indicator/NY.GDP.MKTP.CD?format=json`).pipe();
   }
 }
