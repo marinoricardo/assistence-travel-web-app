@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="content">
     <div class="row">
-      <div class="col-md-4 sidebar">
+      <div class="col-md-6 col-lg-4 col-sm-12 sidebar">
         <div class="row">
 
           <div class="col-md-9 p-0">
@@ -9,7 +9,7 @@
               placeholder="Procure a sua cidade">
           </div>
           <div class="col-md-3 p-0">
-            <button class="btn btn-danger remove-border-radius" (click)="search()" [disabled]="disabled">
+            <button class="btn btn-danger remove-border-radius dm-disable" (click)="search()" [disabled]="disabled">
               <span class="spinner-border spinner-border-sm" aria-hidden="true" *ngIf="spinner"></span>
               <span role="status" style="padding-left: 10px;">Pesquisar</span>
             </button>
@@ -24,12 +24,11 @@
         <h4>{{ weather_forecast.name }}, {{country}}</h4>
         <hr>
         <span>Max: {{ weather_forecast.main.temp_max }} °C</span>
-        <span>Min: {{ weather_forecast.main.temp_min }} °C</span> <br>
-        <span>Humidade: {{ weather_forecast.main.humidity }} %</span> <br>
-        <span>Pressao: {{ weather_forecast.main.pressure }} Pa</span> <br>
+        <span>Min: {{ weather_forecast.main.temp_min }} °C</span> 
+        <span>Humidade: {{ weather_forecast.main.humidity }} %</span> 
+        <span>Pressão: {{ weather_forecast.main.pressure }} Pa</span> 
       </div>
-      <div class="col-md-8 main">
-
+      <div class="col-md-6 col-lg-8 col-sm-12 main">
         <div class="row">
           <div class="col-md-12">
             <div class="text-center" *ngIf="spinner">
@@ -40,11 +39,16 @@
               </div>
             </div>
           </div>
+          <div class="col-md-12">
+            <div class="alert alert-light mt-1" role="alert">
+              Aproveite as vantagens exclusivas! Autentique-se ou crie sua conta para acessar informações adicionais
+            </div>
+          </div>
           <div class="col-md-6">
             <h3>Taxas de câmbio</h3>
             <div class="card mb-3 weather-card">
               <div class="card-body">
-                <h5 class="card-title"><span class="moeda">EUR </span><span class="ref_moeda">Moeda de Referencia</span>
+                <h5 class="card-title"><span class="moeda">1 {{ currency }} </span><span class="ref_moeda">Moeda de Referencia</span>
                 </h5>
                 <div class="card-text">
                   <table class="table">
@@ -59,48 +63,48 @@
                       <tr>
                         <td>MZN</td>
 
-                        <td>12</td>
+                        <td>{{ exchange_rates.conversion_rates.MZN }}</td>
                         <td><img src="https://flagcdn.com/w320/mz.png" width="30" height="30"
                             style="border-radius: 50%;" alt=""></td>
                       </tr>
                       <tr>
                         <td>USD</td>
 
-                        <td>12</td>
+                        <td>{{ exchange_rates.conversion_rates.USD }}</td>
                         <td><img src="https://flagcdn.com/w320/us.png" width="30" height="30"
                             style="border-radius: 50%;" alt=""></td>
                       </tr>
                       <tr>
                         <td>ZAR</td>
 
-                        <td>1.9</td>
+                        <td>{{ exchange_rates.conversion_rates.ZAR }}</td>
                         <td><img src="https://flagcdn.com/w320/za.png" width="30" height="30"
                             style="border-radius: 50%;" alt=""></td>
                       </tr>
                       <tr>
                         <td>AUD</td>
 
-                        <td>1.9</td>
+                        <td>{{ exchange_rates.conversion_rates.AUD }}</td>
                         <td><img src="https://flagcdn.com/w320/tv.png" width="30" height="30"
                             style="border-radius: 50%;" alt=""></td>
                       </tr>
                       <tr>
                         <td>CAD</td>
 
-                        <td>1.9</td>
+                        <td>{{ exchange_rates.conversion_rates.CAD }}</td>
                         <td><img src="https://flagcdn.com/w320/ca.png" width="30" height="30"
                             style="border-radius: 50%;" alt=""></td>
                       </tr>
                       <tr>
                         <td>GBP</td>
 
-                        <td>1.9</td>
+                        <td>{{ exchange_rates.conversion_rates.GBP }}</td>
                         <td><img src="https://flagcdn.com/w320/gb.png" width="30" height="30"
                             style="border-radius: 50%;" alt=""></td>
                       </tr>
                       <tr>
                         <td>JPY</td>
-                        <td>1.9</td>
+                        <td>{{ exchange_rates.conversion_rates.JPY }}</td>
                         <td><img src="https://flagcdn.com/w320/jp.png" width="30" height="30"
                             style="border-radius: 50%;" alt=""></td>
                       </tr>
@@ -134,19 +138,13 @@
         </div>
         <h3>Previsão do tempo 5 dias / 3 horas</h3>
         <div class="row">
-          <div class="col-2" *ngFor="let item of forecast">
+          <div class="col-md-2" *ngFor="let item of forecast">
             <div class="card mb-3 weather-card">
               <div class="card-body text-center">
                 <h5 class="card-title">{{ item.dt_txt }}</h5>
                 <img src="https://i.ibb.co/PZQXH8V/27.png" width="55" height="50" alt="">
                 <p class="card-text">{{ item.main.temp }}°C</p>
               </div>
-            </div>
-          </div>
-          <div class="col-md-12">
-            <div class="alert alert-light mt-5" role="alert">
-              Aproveite as vantagens exclusivas! Autentique-se ou crie sua conta para acessar informações adicionais
-              <button class="btn btn-danger">Entrar</button>
             </div>
           </div>
         </div>

@@ -19,6 +19,6 @@ export class WeatherService {
   }
 
   getExchangeRates(){
-    return this.http.get<any>('http://api.exchangeratesapi.io/v1/latest?access_key=18ee1beb2c736339ea82fa6a410336c5&symbols=USD,MZN,ZAR,AUD,CAD,GBP,JPY').pipe()
+    return this.http.get<any>('https://v6.exchangerate-api.com/v6/3120e260d315985f902abd0a/latest/MZN').pipe()
   }
 }

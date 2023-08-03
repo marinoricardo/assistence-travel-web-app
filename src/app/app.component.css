@@ -1,6 +1,7 @@
 .container-fluid {
     padding: 4%;
 }
+
 .weather-card {
     min-width: 60%;
     border-radius: 20px;
@@ -68,6 +69,7 @@ p {
     color: grey;
     font-weight: normal;
 }
+
 h5 {
     font-family: 'Roboto';
     font-size: 1.0rem;
@@ -76,9 +78,9 @@ h5 {
 
 .remove-box-shadow {
     box-shadow: none !important;
-    border: 0.5px #2A4C7E; 
+    border: 0.5px #2A4C7E;
     border-radius: 10px 0px 0px 10px;
-    
+
 }
 
 .remove-border-radius {
@@ -86,7 +88,8 @@ h5 {
     height: 36px;
 }
 
-p,span {
+p,
+span {
     font-family: 'Roboto'
 }
 
@@ -94,12 +97,32 @@ p,span {
     font-size: 2.4rem;
     font-family: 'Roboto'
 }
+
 .card-title .ref_moeda {
     font-family: 'Roboto';
     font-weight: normal;
     color: grey;
 }
 
-.img-principal{
+.img-principal {
     padding: 5px;
+}
+
+@media (max-width: 414px) {
+    .sidebar {
+        border-radius: 0px;
+        padding: 10px;
+    }
+
+    .remove-border-radius {
+        display: none;
+    }
+
+    .remove-box-shadow {
+        margin: 20px;
+    }
+    .main{
+        border-radius: 0px;
+        padding: 10px;
+    }
 }

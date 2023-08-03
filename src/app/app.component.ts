@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { WeatherService } from './_services/weather.service';
 import { Forecast } from './interfaces/forecast';
 import { ExchangeRate } from './interfaces/exchange-rate';
+import countryToCurrency from 'country-to-currency';
 
 @Component({
   selector: 'app-root',
@@ -17,8 +18,10 @@ export class AppComponent implements OnInit {
   country: any = "";
   spinner = false;
   disabled = false;
-  exchange_rates: any[] = [];
-  rates = []
+  exchange_rates: any;
+  rates = [];
+  country_code = "";
+  currency = "";
 
   constructor(private _weather: WeatherService) { }
   ngOnInit() {
@@ -32,8 +35,9 @@ export class AppComponent implements OnInit {
     this._weather.getWeather(city_name)
     .subscribe(res => {
       this.weather_forecast = res
-      const country_code = this.weather_forecast.sys.country;
-      this.country = this.convertCountryCode(country_code)
+      this.country_code = this.weather_forecast.sys.country;
+      this.country = this.convertCountryCode(this.country_code)
+      this.currency = countryToCurrency["MZ"]
       this.city_name = ""
       this.disabled = false
       this.spinner = false
@@ -55,9 +59,6 @@ export class AppComponent implements OnInit {
     this._weather.getExchangeRates().subscribe(res => {
       this.spinner = true
       this.exchange_rates = res
-      this.forecast.forEach((element) => {
-        console.log(element)
-      })
       this.spinner = false
     })
   }
