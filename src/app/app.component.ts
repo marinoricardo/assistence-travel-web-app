@@ -23,6 +23,9 @@ export class AppComponent implements OnInit {
   country_code = "";
   currency = "";
   show_all = false;
+  temp: number = 0
+  temp_max: number = 0
+  temp_min: number = 0
 
   constructor(private _weather: WeatherService) { }
   ngOnInit() {
@@ -36,6 +39,9 @@ export class AppComponent implements OnInit {
     this._weather.getWeather(city_name)
       .subscribe(res => {
         this.weather_forecast = res
+        this.temp = Math.round(this.weather_forecast.main.temp)
+        this.temp_max = Math.round(this.weather_forecast.main.temp_max)
+        this.temp_min = Math.round(this.weather_forecast.main.temp_min)
         this.country_code = res.sys.country;
         this.executePopulation(this.country_code)
         this.country = this.convertCountryCode(this.country_code)
@@ -80,7 +86,7 @@ export class AppComponent implements OnInit {
     this.show_all = true
   }
 
-  viewLess(){
+  viewLess() {
     this.show_all = false
   }
 

@@ -1,161 +1,178 @@
 <div class="container-fluid">
-    <div class="row content">
-      <div class="col-md-6 col-lg-4 col-sm-12 sidebar">
-        <div class="row">
+  <div class="row content">
+    <div class="col-md-6 col-lg-4 col-sm-12 sidebar">
+      <div class="row">
 
-          <div class="col-md-9 p-0">
-            <input type="text" [(ngModel)]="city_name" name="city_name" class="form-control remove-box-shadow"
-              placeholder="Pesquise por uma cidade" (keyup.enter)="onEnterKeyPressed($event)">
-          </div>
-          <div class="col-md-3 p-0">
-            <button class="btn btn-danger remove-border-radius" name="btnSearch" (click)="search()" [disabled]="disabled">
-              <span class="spinner-border spinner-border-sm" aria-hidden="true" *ngIf="spinner"></span>
-              <span role="status" style="padding-left: 10px;">Pesquisar</span>
-            </button>
-          </div>
+        <div class="col-md-9 p-0">
+          <input type="text" [(ngModel)]="city_name" name="city_name" class="form-control remove-box-shadow"
+            placeholder="Pesquise por uma cidade" (keyup.enter)="onEnterKeyPressed($event)">
         </div>
-        <div class="text-center">
-          <h2>{{ weather_forecast.main.temp }}°C</h2>
-          <h4>{{ weather_forecast.name }}, {{country}}</h4>
+        <div class="col-md-3 p-0">
+          <button class="btn btn-danger remove-border-radius" name="btnSearch" (click)="search()" [disabled]="disabled">
+            <span class="spinner-border spinner-border-sm" aria-hidden="true" *ngIf="spinner"></span>
+            <span role="status" style="padding-left: 10px;">Pesquisar</span>
+          </button>
         </div>
-        <hr>
-        <span>Max: {{ weather_forecast.main.temp_max }} °C</span>
-        <span>Min: {{ weather_forecast.main.temp_min }} °C</span>
-        <span>Humidade: {{ weather_forecast.main.humidity }} %</span>
-        <span>Pressão: {{ weather_forecast.main.pressure }} Pa</span>
       </div>
-      <div class="col-md-6 col-lg-8 col-sm-12 main">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="text-center" *ngIf="spinner">
-              <div class="loader">
-                <div class="spinner-border m-5" style="width: 3rem; height: 3rem;" role="status">
-                  <span class="visually-hidden">Loading...</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-12">
-            <div class="alert alert-light mt-1" role="alert">
-              Aproveite as vantagens exclusivas! Autentique-se ou crie sua conta para acessar informações adicionais
-            </div>
-          </div>
-          <div class="col-md-6">
-            <h3>Taxas de câmbio</h3>
-            <div class="card mb-3 weather-card" >
-              <div class="card-body">
-                <h5 class="card-title"><span class="moeda">EUR </span><span class="ref_moeda">Moeda de Referencia</span>
-                </h5>
-                <div class="card-text">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>MZN</td>
-
-                        <td>{{ exchange_rates.conversion_rates.MZN }}</td>
-                        <td><img src="https://flagcdn.com/w320/mz.png" width="30" height="30"
-                            style="border-radius: 50%;" alt=""></td>
-                      </tr>
-                      <tr>
-                        <td>USD</td>
-
-                        <td>{{ exchange_rates.conversion_rates.USD }}</td>
-                        <td><img src="https://flagcdn.com/w320/us.png" width="30" height="30"
-                            style="border-radius: 50%;" alt=""></td>
-                      </tr>
-                      <tr>
-                        <td>ZAR</td>
-
-                        <td>{{ exchange_rates.conversion_rates.ZAR }}</td>
-                        <td><img src="https://flagcdn.com/w320/za.png" width="30" height="30"
-                            style="border-radius: 50%;" alt=""></td>
-                      </tr>
-                      <tr>
-                        <td>AUD</td>
-
-                        <td>{{ exchange_rates.conversion_rates.AUD }}</td>
-                        <td><img src="https://flagcdn.com/w320/tv.png" width="30" height="30"
-                            style="border-radius: 50%;" alt=""></td>
-                      </tr>
-                      <tr>
-                        <td>CAD</td>
-
-                        <td>{{ exchange_rates.conversion_rates.CAD }}</td>
-                        <td><img src="https://flagcdn.com/w320/ca.png" width="30" height="30"
-                            style="border-radius: 50%;" alt=""></td>
-                      </tr>
-                      <tr>
-                        <td>GBP</td>
-
-                        <td>{{ exchange_rates.conversion_rates.GBP }}</td>
-                        <td><img src="https://flagcdn.com/w320/gb.png" width="30" height="30"
-                            style="border-radius: 50%;" alt=""></td>
-                      </tr>
-                      <tr>
-                        <td>JPY</td>
-                        <td>{{ exchange_rates.conversion_rates.JPY }}</td>
-                        <td><img src="https://flagcdn.com/w320/jp.png" width="30" height="30"
-                            style="border-radius: 50%;" alt=""></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <h3>Numero da População e PIB per capita</h3>
-            <app-population-gdp></app-population-gdp>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-10">
-            <h3>Previsão do tempo 5 dias / 3 horas {{country_code}}</h3>
-          </div>
-          <div class="col-md-2">
-            <div class="btn btn-danger btn-sm" (click)="viewMore()" *ngIf="!show_all">Ver mais</div>
-            <div class="btn btn-dark btn-sm" (click)="viewLess()" *ngIf="show_all">Ver menos</div>
-          </div>
-        </div>
-        <div class="row" *ngIf="!show_all">
-          <div class="col-md-2" *ngFor="let item of forecast.slice(0,6)">
-            <div class="card mb-3 weather-card">
-              <div class="card-body text-center">
-                <h5 class="card-title">{{ item.dt_txt }}</h5>
-                <img *ngIf="item.weather[0].main == 'Rain'" src="../assets/images/rain.png" width="55" height="50"
-                  alt="">
-                <img *ngIf="item.weather[0].main == 'Clouds'" src="../assets/images/clouds.png" width="55" height="50"
-                  alt="">
-                <img *ngIf="item.weather[0].main == 'Clear'" src="../assets/images/clear.png" width="55" height="50"
-                  alt="">
-                <p class="card-text">{{ item.main.temp }}°C</p>
+      <div class="text-center">
+        <h2>{{ temp }}°C</h2>
+        <h4>{{ weather_forecast.name }}, {{country}}</h4>
+      </div>
+      <hr>
+      <span>Max: {{ temp_max }} °C</span>
+      <span>Min: {{ temp_min }} °C</span>
+      <span>Humidade: {{ weather_forecast.main.humidity }} %</span>
+      <span>Pressão: {{ weather_forecast.main.pressure }} Pa</span>
+    </div>
+    <div class="col-md-6 col-lg-8 col-sm-12 main">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="text-center" *ngIf="spinner">
+            <div class="loader">
+              <div class="spinner-border m-5" style="width: 3rem; height: 3rem;" role="status">
+                <span class="visually-hidden">Loading...</span>
               </div>
             </div>
           </div>
         </div>
-        <div class="row" *ngIf="show_all">
-          <div class="col-md-2" *ngFor="let item of forecast.slice(6)">
-            <div class="card mb-3 weather-card">
-              <div class="card-body text-center">
-                <h5 class="card-title">{{ item.dt_txt }}</h5>
-                <img *ngIf="item.weather[0].main == 'Rain'" src="../assets/images/rain.png" width="55" height="50"
-                  alt="">
-                <img *ngIf="item.weather[0].main == 'Clouds'" src="../assets/images/clouds.png" width="55" height="50"
-                  alt="">
-                <img *ngIf="item.weather[0].main == 'Clear'" src="../assets/images/clear.png" width="55" height="50"
-                  alt="">
-                <p class="card-text">{{ item.main.temp }}°C</p>
+        <div class="col-md-12">
+          <div class="alert alert-light mt-1" role="alert">
+            Aproveite vantagens exclusivas! Acesse informações adicionais ao autenticar-se ou criar sua conta. Não é necessário registro prévio!
+            <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Entrar</button>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h3>Taxas de câmbio</h3>
+          <div class="card mb-3 weather-card" style="filter: blur(5px);">
+            <div class="card-body">
+              <h5 class="card-title"><span class="moeda">EUR </span><span class="ref_moeda">Moeda de Referencia</span>
+              </h5>
+              <div class="card-text">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col"></th>
+                      <th scope="col"></th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>MZN</td>
+
+                      <td>{{ exchange_rates.conversion_rates.MZN }}</td>
+                      <td><img src="https://flagcdn.com/w320/mz.png" width="30" height="30" style="border-radius: 50%;"
+                          alt=""></td>
+                    </tr>
+                    <tr>
+                      <td>USD</td>
+
+                      <td>{{ exchange_rates.conversion_rates.USD }}</td>
+                      <td><img src="https://flagcdn.com/w320/us.png" width="30" height="30" style="border-radius: 50%;"
+                          alt=""></td>
+                    </tr>
+                    <tr>
+                      <td>ZAR</td>
+
+                      <td>{{ exchange_rates.conversion_rates.ZAR }}</td>
+                      <td><img src="https://flagcdn.com/w320/za.png" width="30" height="30" style="border-radius: 50%;"
+                          alt=""></td>
+                    </tr>
+                    <tr>
+                      <td>AUD</td>
+
+                      <td>{{ exchange_rates.conversion_rates.AUD }}</td>
+                      <td><img src="https://flagcdn.com/w320/tv.png" width="30" height="30" style="border-radius: 50%;"
+                          alt=""></td>
+                    </tr>
+                    <tr>
+                      <td>CAD</td>
+
+                      <td>{{ exchange_rates.conversion_rates.CAD }}</td>
+                      <td><img src="https://flagcdn.com/w320/ca.png" width="30" height="30" style="border-radius: 50%;"
+                          alt=""></td>
+                    </tr>
+                    <tr>
+                      <td>GBP</td>
+
+                      <td>{{ exchange_rates.conversion_rates.GBP }}</td>
+                      <td><img src="https://flagcdn.com/w320/gb.png" width="30" height="30" style="border-radius: 50%;"
+                          alt=""></td>
+                    </tr>
+                    <tr>
+                      <td>JPY</td>
+                      <td>{{ exchange_rates.conversion_rates.JPY }}</td>
+                      <td><img src="https://flagcdn.com/w320/jp.png" width="30" height="30" style="border-radius: 50%;"
+                          alt=""></td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h3>Numero da População e PIB per capita</h3>
+          <app-population-gdp></app-population-gdp>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-10">
+          <h3>Previsão do tempo 5 dias / 3 horas {{country_code}}</h3>
+        </div>
+        <div class="col-md-2">
+          <div class="btn btn-danger btn-sm" (click)="viewMore()" *ngIf="!show_all">Ver mais</div>
+          <div class="btn btn-dark btn-sm" (click)="viewLess()" *ngIf="show_all">Ver menos</div>
+        </div>
+      </div>
+      <div class="row" *ngIf="!show_all">
+        <div class="col-md-2" *ngFor="let item of forecast.slice(0,6)">
+          <div class="card mb-3 weather-card">
+            <div class="card-body text-center">
+              <h5 class="card-title">{{ item.dt_txt }}</h5>
+              <img *ngIf="item.weather[0].main == 'Rain'" src="../assets/images/rain.png" width="55" height="50" alt="">
+              <img *ngIf="item.weather[0].main == 'Clouds'" src="../assets/images/clouds.png" width="55" height="50"
+                alt="">
+              <img *ngIf="item.weather[0].main == 'Clear'" src="../assets/images/clear.png" width="55" height="50"
+                alt="">
+              <p class="card-text">{{ item.main.temp }}°C</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" *ngIf="show_all">
+        <div class="col-md-2" *ngFor="let item of forecast.slice(6)">
+          <div class="card mb-3 weather-card">
+            <div class="card-body text-center">
+              <h5 class="card-title">{{ item.dt_txt }}</h5>
+              <img *ngIf="item.weather[0].main == 'Rain'" src="../assets/images/rain.png" width="55" height="50" alt="">
+              <img *ngIf="item.weather[0].main == 'Clouds'" src="../assets/images/clouds.png" width="55" height="50"
+                alt="">
+              <img *ngIf="item.weather[0].main == 'Clear'" src="../assets/images/clear.png" width="55" height="50"
+                alt="">
+              <p class="card-text">{{ item.main.temp }}°C</p>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Entrar</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input type="text" class="form-control remove-box-shadow-email" placeholder="E-mail">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger">Submeter</button>
+      </div>
+    </div>
+  </div>
 </div>
