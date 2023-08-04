@@ -12,12 +12,19 @@ export class PopulationGdpComponent implements OnInit {
   gdp_per_capita: any[] = []
   last_update_pop = ""
   last_update_gdp = ""
+  isAuthenticate = false
   constructor(private _population: WeatherService) { }
 
   ngOnInit(): void {
     let country = "MZ"
     this.getLast7YearsPopulations(country);
     this.getLast7YearsGDP(country)
+    let token = localStorage.getItem("token")
+    if(token){
+      this.isAuthenticate = true
+    }else{
+      this.isAuthenticate = false
+    }
   }
 
   getLast7YearsPopulations(country_code: string){
