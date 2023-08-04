@@ -9,7 +9,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  authenticate(email: string){
-    return this.http.get<any>(`${URL.auth}/login`).pipe();
+  authenticate(data: any){
+    return this.http.get<any>(`${URL.auth}`, data).pipe();
   }
 }

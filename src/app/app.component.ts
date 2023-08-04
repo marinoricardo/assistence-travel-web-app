@@ -2,6 +2,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { WeatherService } from './_services/weather.service';
 import { PopulationGdpComponent } from './components/population-gdp/population-gdp.component';
 import Swal from 'sweetalert2';
+import { AuthService } from './_services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -28,7 +29,7 @@ export class AppComponent implements OnInit {
   temp_max: number = 0
   temp_min: number = 0
 
-  constructor(private _weather: WeatherService) { }
+  constructor(private _weather: WeatherService, private _auth: AuthService) { }
   ngOnInit() {
     this.getWeather(this.initial_string);
     this.getExchangeRates()
@@ -99,5 +100,14 @@ export class AppComponent implements OnInit {
     if (this.populationGdpComponent) {
       this.populationGdpComponent.executeCommand(country);
     }
+  }
+
+  authenticate(){
+    let user = {
+      'email' : this.email
+    }
+    this._auth.authenticate(user).subscribe((res) => {
+      console.log(res)
+    })
   }
 }
