@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
 export class AppComponent implements OnInit {
   @ViewChild(PopulationGdpComponent) populationGdpComponent!: PopulationGdpComponent;
   @Input() city_name: string = "";
+  @Input() email: string = "";
   title = 'assistence-travel-web-app';
   weather_forecast: any = [];
   forecast: any[] = [];
