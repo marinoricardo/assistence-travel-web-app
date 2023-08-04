@@ -35,7 +35,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12" *ngIf="!isAuthenticate">
           <div class="alert alert-light mt-1" role="alert">
             Aproveite vantagens exclusivas! Acesse informações adicionais ao autenticar-se ou criar sua conta. Não é necessário registro prévio!
             <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Entrar</button>
@@ -43,7 +43,7 @@
         </div>
         <div class="col-md-6">
           <h3>Taxas de câmbio</h3>
-          <div class="card mb-3 weather-card" style="filter: blur(5px);">
+          <div [ngClass]="{'card mb-3 weather-card': isAuthenticate, 'blur': !isAuthenticate}">
             <div class="card-body">
               <h5 class="card-title"><span class="moeda">EUR </span><span class="ref_moeda">Moeda de Referencia</span>
               </h5>
@@ -111,9 +111,10 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" >
           <h3>Numero da População e PIB per capita</h3>
-          <app-population-gdp></app-population-gdp>
+          .
+          <app-population-gdp ></app-population-gdp>
         </div>
       </div>
       <div class="row">
@@ -167,10 +168,10 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <input type="text" class="form-control remove-box-shadow-email" placeholder="E-mail">
+        <input type="text" [(ngModel)]="email" class="form-control remove-box-shadow-email" placeholder="E-mail">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-secondary" id="closeBtn" data-bs-dismiss="modal">Cancelar</button>
         <button type="button" class="btn btn-danger" (click)="authenticate()">Submeter</button>
       </div>
     </div>

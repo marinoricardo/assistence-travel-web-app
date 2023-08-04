@@ -28,11 +28,18 @@ export class AppComponent implements OnInit {
   temp: number = 0
   temp_max: number = 0
   temp_min: number = 0
+  isAuthenticate = false
 
   constructor(private _weather: WeatherService, private _auth: AuthService) { }
   ngOnInit() {
     this.getWeather(this.initial_string);
-    this.getExchangeRates()
+    this.getExchangeRates();
+    let token = localStorage.getItem("token")
+    if(token){
+      this.isAuthenticate = true
+    }else{
+      this.isAuthenticate = false
+    }
   }
 
   getWeather(city_name: string) {
@@ -107,7 +114,9 @@ export class AppComponent implements OnInit {
       'email' : this.email
     }
     this._auth.authenticate(user).subscribe((res) => {
-      console.log(res)
+     localStorage.setItem("token", res.token)
+     document.getElementById('closeBtn')?.click()
+     this.isAuthenticate = true
     })
   }
 }
